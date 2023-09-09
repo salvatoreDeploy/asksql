@@ -24,18 +24,26 @@ export default function RootPage() {
 
   const result = completion;
 
+  const buttonTrash = () => {
+    window.location.reload();
+  };
+
   return (
     <div className="max-w-[430px] mx-auto px-4 pt-12 pb-4">
       <header className="flex items-center justify-between">
         <Image src={logo} alt="AskSQL" />
 
-        <button type="button">
-          <Trash2 className="h-8 w-8 text-snow" strokeWidth={0.8} />
+        <button type="submit">
+          <Trash2
+            onClick={buttonTrash}
+            className="h-8 w-8 text-snow"
+            strokeWidth={0.8}
+          />
         </button>
       </header>
 
       <form
-        className="py-8 w-full flex flex-col text-foam"
+        className="py-4 w-full flex flex-col text-foam"
         onSubmit={handleSubmit}
       >
         <label htmlFor="schema" className="text-lg font-light">
@@ -49,7 +57,7 @@ export default function RootPage() {
           highlight={(schema) => highlight(schema, languages.sql, "sql")}
           padding={16}
           textareaClassName="outline-none"
-          className="my-4 h-40 font-mono bg-blueberry-600 border border-blueberry-300 rounded-md focus-within:ring-2 focus-within:ring-lemon-600"
+          className="my-4 h-80 font-mono bg-blueberry-600 border border-blueberry-300 rounded-md focus-within:ring-2 focus-within:ring-lemon-600"
         />
 
         <label htmlFor="question" className="text-lg font-light">
@@ -72,7 +80,7 @@ export default function RootPage() {
         </button>
       </form>
 
-      <div className="mt-6">
+      <div className="mt-2">
         <span className="text-foam text-lg font-light">Resposta:</span>
         <textarea
           readOnly
